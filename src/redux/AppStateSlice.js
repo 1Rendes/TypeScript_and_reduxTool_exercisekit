@@ -34,7 +34,7 @@ export const appStateSlice = createSlice({
         state.error = null;
       })
       .addCase(getimages.fulfilled, (state, { payload }) => {
-        state.total_pages = payload.data.total_pages;
+        state.total_pages = payload.total_pages;
         state.loader = false;
       })
       .addCase(getimages.rejected, (state, { payload }) => {

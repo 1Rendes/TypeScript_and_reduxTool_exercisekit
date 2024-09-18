@@ -2,12 +2,20 @@
 import ReactModal from "react-modal";
 import css from "./ImageModal.module.css";
 import { ImageModalType } from "../../types";
+import { useDispatch, useSelector } from "react-redux";
+import { selectModalData, selectModalToggle } from "../../redux/selectors";
+import { setModalToggle } from "../../redux/appStateSlice";
+import { setModalData } from "../../redux/imagesSlice";
 
-const ImageModal: React.FC<ImageModalType> = ({
-  modalData,
-  closeModal,
-  modalIsOpen,
-}) => {
+const ImageModal: React.FC<ImageModalType> = () => {
+  const modalIsOpen = useSelector(selectModalToggle);
+  const modalData = useSelector(selectModalData);
+  const dispatch = useDispatch();
+  const closeModal = () => {
+    dispatch(setModalToggle());
+    dispatch(setModalData(null));
+  };
+
   return (
     <ReactModal
       overlayClassName={css.backdrop}
@@ -16,7 +24,7 @@ const ImageModal: React.FC<ImageModalType> = ({
       onRequestClose={closeModal}
       ariaHideApp={false}
     >
-      {modalData && (
+      {modalIsOpen && (
         <>
           <img
             className={css.image}

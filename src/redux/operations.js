@@ -17,7 +17,7 @@ export const getimages = createAsyncThunk(
           params,
         }
       );
-      return responce;
+      return responce.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

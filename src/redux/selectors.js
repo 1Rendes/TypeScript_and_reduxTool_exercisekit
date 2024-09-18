@@ -1,4 +1,5 @@
 export const selectImagesData = (state) => state.images.results;
+export const selectModalData = (state) => state.images.modalData;
 
 export const selectTotalPages = (state) => state.appState.total_pages;
 export const selectPage = (state) => state.appState.page;

@@ -3,6 +3,7 @@ import { getimages } from "./operations";
 
 const INITIAL_STATE = {
   results: [],
+  modalData: {},
 };
 
 export const imagesSlice = createSlice({
@@ -12,13 +13,18 @@ export const imagesSlice = createSlice({
     cleanImagesData(state) {
       state.results = [];
     },
+    setModalData(state, { payload }) {
+      if (payload) {
+        state.modalData = state.results.find((result) => result.id === payload);
+      } else state.modalData = {};
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getimages.fulfilled, (state, { payload }) => {
-      state.results = [...state.results, ...payload.data.results];
+      state.results = [...state.results, ...payload.results];
     });
   },
 });
 
 export const imagesReducer = imagesSlice.reducer;
-export const { cleanImagesData } = imagesSlice.actions;
+export const { cleanImagesData, setModalData } = imagesSlice.actions;

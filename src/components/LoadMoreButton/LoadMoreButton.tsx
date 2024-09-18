@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
+import { useDispatch } from "react-redux";
 import { LoadMoreButtonType } from "../../types";
 import css from "./LoadMoreButton.module.css";
-const LoadMoreButton: React.FC<LoadMoreButtonType> = ({ page, onClick }) => {
+import { setPage } from "../../redux/appStateSlice";
+const LoadMoreButton: React.FC<LoadMoreButtonType> = () => {
+  const dispatch = useDispatch();
   const handlerLoadMore = () => {
-    onClick(page);
+    dispatch(setPage());
   };
   return (
     <button className={css.button} type="button" onClick={handlerLoadMore}>
