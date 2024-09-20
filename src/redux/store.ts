@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { appStateReducer } from "./appStateSlice";
-// import { modalReducer } from "./modalSlice";
 import { imagesReducer } from "./imagesSlice";
 
 export const store = configureStore({
   reducer: {
     images: imagesReducer,
-    // modal: modalReducer,
     appState: appStateReducer,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

@@ -1,9 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getimages } from "./operations";
+import { ImagesData, ImageData } from "../types";
 
-const INITIAL_STATE = {
+type Init = {
+  results: ImagesData;
+  modalData: ImageData;
+};
+
+const INITIAL_STATE: Init = {
   results: [],
-  modalData: {},
+  modalData: {
+    id: 0,
+  },
 };
 
 export const imagesSlice = createSlice({
@@ -15,8 +23,15 @@ export const imagesSlice = createSlice({
     },
     setModalData(state, { payload }) {
       if (payload) {
-        state.modalData = state.results.find((result) => result.id === payload);
-      } else state.modalData = {};
+        state.modalData = state.results.find(
+          (result) => result.id === payload
+        ) || {
+          id: 0,
+        };
+      } else
+        state.modalData = {
+          id: 0,
+        };
     },
   },
   extraReducers: (builder) => {

@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-// import { ImagesGalleryType } from "../../types";
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
 import { selectImagesData } from "../../redux/selectors";
+import { ImagesGalleryType } from "../../types";
 
-const ImageGallery = () => {
+const ImageGallery: React.FC<ImagesGalleryType> = () => {
   const imagesData = useSelector(selectImagesData);
   return (
     <ul className={css.imageList}>

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ImageCardType } from "../../types";
 import css from "./ImageCard.module.css";
 import { setModalData } from "../../redux/imagesSlice";

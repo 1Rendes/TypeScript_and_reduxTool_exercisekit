@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useDispatch } from "react-redux";
 import { LoadMoreButtonType } from "../../types";
 import css from "./LoadMoreButton.module.css";

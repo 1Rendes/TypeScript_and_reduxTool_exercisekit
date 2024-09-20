@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
 import ReactModal from "react-modal";
 import css from "./ImageModal.module.css";
-import { ImageModalType } from "../../types";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModalData, selectModalToggle } from "../../redux/selectors";
 import { setModalToggle } from "../../redux/appStateSlice";
 import { setModalData } from "../../redux/imagesSlice";
+import { ImageModalType } from "../../types";
 
 const ImageModal: React.FC<ImageModalType> = () => {
   const modalIsOpen = useSelector(selectModalToggle);
